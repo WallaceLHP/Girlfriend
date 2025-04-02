@@ -62,10 +62,10 @@
 
         .container {
             background: rgba(255, 255, 255, 0.9);
-            padding: 40px;
+            padding: clamp(20px, 4vw, 40px);
             border-radius: 20px;
             backdrop-filter: blur(5px);
-            max-width: 800px;
+            max-width: 90%;
             width: 90%;
             margin: 20px auto;
             position: relative;
@@ -74,6 +74,11 @@
             transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
             animation: gentleFloat 8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
             transform-origin: center;
+            text-align: center;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
         }
 
         .container.expanded {
@@ -93,66 +98,55 @@
         .message-container {
             position: relative;
             margin: 20px auto;
-            padding: 30px;
+            padding: clamp(20px, 4vw, 30px);
             border-radius: 15px;
             background: rgba(255, 255, 255, 0.5);
             box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
             backdrop-filter: blur(8px);
             border: 1px solid rgba(255, 255, 255, 0.18);
-            overflow: hidden;
-            width: 80%;
+            width: 90%;
             max-width: 600px;
-            animation: gentleMessageFloat 10s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-            transform-style: preserve-3d;
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            flex: 1;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
         }
 
-        @keyframes gentleMessageFloat {
-            0%, 100% {
-                transform: translateY(0) rotate3d(1, 1, 1, 0.2deg);
-                box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
-            }
-            50% {
-                transform: translateY(-5px) rotate3d(1, 1, 1, -0.2deg);
-                box-shadow: 0 12px 36px rgba(31, 38, 135, 0.2);
-            }
+        .message-container::-webkit-scrollbar {
+            width: 8px;
         }
 
-        h1 {
-            color: #ff4d4d;
-            font-family: 'Dancing Script', cursive;
-            font-size: 2.5em;
-            margin-bottom: 30px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-            animation: titleFloat 5s ease-in-out infinite;
+        .message-container::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
         }
 
-        @keyframes titleFloat {
-            0%, 100% {
-                transform: translateY(0);
-                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-            }
-            50% {
-                transform: translateY(-10px);
-                text-shadow: 4px 8px 8px rgba(0, 0, 0, 0.2);
-            }
+        .message-container::-webkit-scrollbar-thumb {
+            background: rgba(255, 77, 77, 0.3);
+            border-radius: 4px;
         }
 
-        p {
-            font-size: 1.2em;
-            line-height: 1.8;
-            white-space: pre-wrap;
-            opacity: 0;
+        .message-container::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 77, 77, 0.5);
+        }
+
+        #mensagem {
+            font-size: clamp(1em, 2.5vw, 1.2em);
+            line-height: 2;
+            color: #333;
             visibility: hidden;
-            font-family: 'Poppins', sans-serif;
-            color: #555;
-            text-align: justify;
-            margin: 0 auto;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            text-align: left;
             position: relative;
-            max-width: 95%;
-            word-break: keep-all;
-            word-wrap: break-word;
-            hyphens: none;
+            white-space: pre-wrap;
+            overflow-wrap: break-word;
+            word-break: normal;
+            word-spacing: normal;
+            padding: clamp(10px, 3vw, 20px);
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            flex: 1;
         }
 
         .char {
@@ -161,6 +155,7 @@
             transform: translateY(8px);
             animation: gentleFadeInUp 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            letter-spacing: 0.02em;
         }
 
         @keyframes gentleFadeInUp {
@@ -172,15 +167,12 @@
 
         .cursor {
             display: inline-block;
-            width: 2px;
-            height: 1.4em;
+            width: 3px;
+            height: 1.2em;
             background-color: #ff4d4d;
-            margin-left: 1px;
-            animation: blink 1s infinite;
+            margin-left: 2px;
+            animation: blink 0.7s infinite;
             position: absolute;
-            left: 0;
-            top: 0;
-            transform: translateY(2px);
         }
 
         @keyframes blink {
@@ -205,28 +197,14 @@
         .botao {
             background: linear-gradient(45deg, #ff4d4d, #ff8080);
             color: white;
-            padding: 12px 25px;
+            padding: clamp(10px, 3vw, 15px) clamp(20px, 5vw, 30px);
             border: none;
             border-radius: 25px;
             cursor: pointer;
-            font-size: 1.1em;
+            font-size: clamp(0.9em, 2.5vw, 1.1em);
             margin: 20px 0;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 15px rgba(255, 77, 77, 0.2);
-            animation: gentleButtonFloat 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-            position: relative;
-            overflow: hidden;
-        }
-
-        @keyframes gentleButtonFloat {
-            0%, 100% {
-                transform: translateY(0);
-                box-shadow: 0 4px 15px rgba(255, 77, 77, 0.2);
-            }
-            50% {
-                transform: translateY(-4px);
-                box-shadow: 0 6px 18px rgba(255, 77, 77, 0.3);
-            }
+            transition: all 0.3s ease;
+            opacity: 1;
         }
 
         .botao:hover {
@@ -284,10 +262,33 @@
             display: none;
         }
 
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0px); }
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+                max-height: 85vh;
+            }
+
+            .message-container {
+                margin: 10px auto;
+                padding: 15px;
+                width: 95%;
+            }
+
+            #mensagem {
+                line-height: 1.8;
+                padding: clamp(8px, 2vw, 15px);
+                font-size: clamp(0.9em, 4vw, 1.1em);
+            }
+
+            .message-container::-webkit-scrollbar {
+                width: 4px;
+            }
+
+            .char {
+                letter-spacing: normal;
+                display: inline;
+            }
         }
     </style>
 </head>

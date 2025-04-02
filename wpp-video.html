@@ -62,7 +62,7 @@
 
         .container {
             background: rgba(255, 255, 255, 0.9);
-            padding: 40px;
+            padding: clamp(20px, 4vw, 40px);
             border-radius: 20px;
             backdrop-filter: blur(5px);
             max-width: 90%;
@@ -94,7 +94,7 @@
         h1 {
             color: #ff4d4d;
             font-family: 'Dancing Script', cursive;
-            font-size: 2.5em;
+            font-size: clamp(2em, 5vw, 2.5em);
             margin: 0 0 20px 0;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
             animation: titleFloat 5s ease-in-out infinite;
@@ -114,7 +114,7 @@
         .video-container {
             position: relative;
             width: 100%;
-            height: calc(100% - 160px); /* Altura total menos espaço para título e botão */
+            height: calc(100% - 140px);
             margin: 0 auto;
             border-radius: 15px;
             overflow: hidden;
@@ -148,17 +148,15 @@
         .botao {
             background: linear-gradient(45deg, #ff4d4d, #ff8080);
             color: white;
-            padding: 12px 25px;
+            padding: clamp(10px, 3vw, 15px) clamp(20px, 5vw, 30px);
             border: none;
             border-radius: 25px;
             cursor: pointer;
-            font-size: 1.1em;
+            font-size: clamp(0.9em, 2.5vw, 1.1em);
             margin: 20px 0 0 0;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 15px rgba(255, 77, 77, 0.2);
-            animation: gentleButtonFloat 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
             text-decoration: none;
             display: inline-block;
+            transition: all 0.3s ease;
         }
 
         .botao:hover {
@@ -166,14 +164,52 @@
             box-shadow: 0 6px 20px rgba(255, 77, 77, 0.4);
         }
 
-        @keyframes gentleButtonFloat {
-            0%, 100% {
-                transform: translateY(0);
-                box-shadow: 0 4px 15px rgba(255, 77, 77, 0.2);
+        @media (max-width: 768px) {
+            .container {
+                height: 85vh;
+                margin: 15px;
+                padding: 20px;
             }
-            50% {
-                transform: translateY(-4px);
-                box-shadow: 0 6px 18px rgba(255, 77, 77, 0.3);
+
+            .video-container {
+                height: calc(100% - 120px);
+            }
+
+            .heart {
+                width: 15px;
+                height: 15px;
+            }
+
+            .heart:before,
+            .heart:after {
+                width: 15px;
+                height: 15px;
+            }
+
+            .heart:before {
+                left: -7.5px;
+            }
+
+            .heart:after {
+                top: -7.5px;
+            }
+
+            @keyframes gentleFloat {
+                0%, 100% {
+                    transform: translateY(0);
+                }
+                50% {
+                    transform: translateY(-4px);
+                }
+            }
+
+            @keyframes gentleVideoFloat {
+                0%, 100% {
+                    transform: translateY(0) rotate3d(1, 1, 1, 0.1deg);
+                }
+                50% {
+                    transform: translateY(-3px) rotate3d(1, 1, 1, -0.1deg);
+                }
             }
         }
     </style>
@@ -186,7 +222,7 @@
     <div class="heart" style="left: 15%; bottom: 20%; animation-delay: 3s;"></div>
 
     <div class="container">
-        <h1>Nossa História no WhatsApp 💕</h1>
+        <h1>Todo meu amor por você ❤️</h1>
         <div class="video-container">
             <video id="video" controls>
                 <source src="components/video/wpp.mp4" type="video/mp4">

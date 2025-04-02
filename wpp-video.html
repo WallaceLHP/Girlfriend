@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo meu amor por você❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            min-height: 100vh;
+            background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #ffd1ff, #ffb6c1);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #ff4d4d;
+            transform: rotate(45deg);
+            animation: float 4s ease-in-out infinite;
+            opacity: 0.6;
+        }
+
+        .heart:before,
+        .heart:after {
+            content: '';
+            width: 20px;
+            height: 20px;
+            background: #ff4d4d;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .heart:before {
+            left: -10px;
+        }
+
+        .heart:after {
+            top: -10px;
+        }
+
+        @keyframes float {
+            0% { transform: rotate(45deg) translateY(0px); }
+            50% { transform: rotate(45deg) translateY(-20px); }
+            100% { transform: rotate(45deg) translateY(0px); }
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+            max-width: 90%;
+            width: 90%;
+            margin: 20px auto;
+            position: relative;
+            z-index: 1;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: gentleFloat 8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+            transform-origin: center;
+            text-align: center;
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        @keyframes gentleFloat {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-6px);
+            }
+        }
+
+        h1 {
+            color: #ff4d4d;
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5em;
+            margin: 0 0 20px 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            animation: titleFloat 5s ease-in-out infinite;
+        }
+
+        @keyframes titleFloat {
+            0%, 100% {
+                transform: translateY(0);
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            }
+            50% {
+                transform: translateY(-10px);
+                text-shadow: 4px 8px 8px rgba(0, 0, 0, 0.2);
+            }
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: calc(100% - 160px); /* Altura total menos espaço para título e botão */
+            margin: 0 auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+            transform-style: preserve-3d;
+            animation: gentleVideoFloat 10s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes gentleVideoFloat {
+            0%, 100% {
+                transform: translateY(0) rotate3d(1, 1, 1, 0.2deg);
+                box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+            }
+            50% {
+                transform: translateY(-5px) rotate3d(1, 1, 1, -0.2deg);
+                box-shadow: 0 12px 36px rgba(31, 38, 135, 0.2);
+            }
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+            border-radius: 15px;
+            object-fit: contain;
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        .botao {
+            background: linear-gradient(45deg, #ff4d4d, #ff8080);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.1em;
+            margin: 20px 0 0 0;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(255, 77, 77, 0.2);
+            animation: gentleButtonFloat 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .botao:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 77, 77, 0.4);
+        }
+
+        @keyframes gentleButtonFloat {
+            0%, 100% {
+                transform: translateY(0);
+                box-shadow: 0 4px 15px rgba(255, 77, 77, 0.2);
+            }
+            50% {
+                transform: translateY(-4px);
+                box-shadow: 0 6px 18px rgba(255, 77, 77, 0.3);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="heart" style="left: 5%; top: 20%; animation-delay: 0s;"></div>
+    <div class="heart" style="left: 25%; top: 10%; animation-delay: 2s;"></div>
+    <div class="heart" style="right: 15%; top: 15%; animation-delay: 4s;"></div>
+    <div class="heart" style="right: 5%; top: 30%; animation-delay: 1s;"></div>
+    <div class="heart" style="left: 15%; bottom: 20%; animation-delay: 3s;"></div>
+
+    <div class="container">
+        <h1>Nossa História no WhatsApp 💕</h1>
+        <div class="video-container">
+            <video id="video" controls>
+                <source src="components/video/wpp.mp4" type="video/mp4">
+                Seu navegador não suporta o elemento de vídeo.
+            </video>
+        </div>
+        <a href="mensagem.html" class="botao">Continuar para a Mensagem 💌</a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.getElementById('video');
+            
+            // Ajustar volume inicial
+            video.volume = 0.5;
+
+            // Adicionar evento para quando o vídeo terminar
+            video.addEventListener('ended', function() {
+                // Opcional: redirecionar automaticamente após o vídeo terminar
+                // window.location.href = 'mensagem.html';
+            });
+        });
+    </script>
+</body>
+</html>
